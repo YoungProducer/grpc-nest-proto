@@ -2,5 +2,11 @@
   "name": "grpc-nest-proto",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "node generate.js"
+  },
+  "devDependencies": {
+    "ts-proto": "^1.146.0"
+  }
 }
