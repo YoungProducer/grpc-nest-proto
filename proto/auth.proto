@@ -16,7 +16,7 @@ message RegisterRequest {
     string username = 3;
 }
 
-message RegisterRepsonse {
+message RegisterResponse {
     int32 status = 1;
     repeated string error = 2;
 }
