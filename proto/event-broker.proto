@@ -22,7 +22,7 @@ message AddProducerResponse {
 }
 
 message AddConsumerRequest {
-    string streamName = 1;
+    string producerName = 1;
 }
 
 message AddConsumerResponse {
