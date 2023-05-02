@@ -32,7 +32,7 @@ message ProduceEventRequest {
     string producerId = 1;
     string event = 2;
     string data = 3;
-    Timestamp createdAt = 4;
+    reserved 4;
 }
 
 message ProduceEventResponse {
