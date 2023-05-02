@@ -8,7 +8,7 @@ service EventBrokerService {
     rpc RemoveProducer(RemoveProducerRequest) returns (RemoveProducerResponse);
     rpc RemoveConsumer(RemoveConsumerRequest) returns (RemoveConsumerResponse);
     rpc ProduceEvent(stream ProduceEventRequest) returns (stream ProduceEventResponse);
-    rpc ConsumerEvent(stream ConsumeEventRequest) returns (stream ConsumerEventResponse);
+    rpc ConsumeEvent(stream ConsumeEventRequest) returns (stream ConsumerEventResponse);
 }
 
 message AddProducerRequest {
