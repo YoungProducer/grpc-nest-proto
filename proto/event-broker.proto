@@ -5,6 +5,8 @@ package event_broker;
 service EventBrokerService {
     rpc AddProducer(AddProducerRequest) returns (AddProducerResponse);
     rpc AddConsumer(AddConsumerRequest) returns (AddConsumerResponse);
+    rpc RemoveProducer(RemoveProducerRequest) returns (RemoveProducerResponse);
+    rpc RemoveConsumer(RemoveConsumerRequest) returns (RemoveConsumerResponse);
     rpc ProduceEvent(stream ProduceEventRequest) returns (stream ProduceEventResponse);
     rpc ConsumerEvent(stream ConsumeEventRequest) returns (stream ConsumerEventResponse);
 }
@@ -24,6 +26,25 @@ message AddConsumerRequest {
 }
 
 message AddConsumerResponse {
+    string consumerId = 1;
+    int32 status = 2;
+    string error = 3;
+}
+
+message RemoveProducerRequest {
+    string producerId = 1;
+}
+
+message RemoveProducerResponse {
+    int32 status = 1;
+    string error = 2;
+}
+
+message RemoveConsumerRequest {
+    string consumerId = 1;
+}
+
+message RemoveConsumerResponse {
     int32 status = 1;
     string error = 2;
 }
