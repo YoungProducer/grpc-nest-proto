@@ -23,6 +23,7 @@ message AddProducerResponse {
 
 message AddConsumerRequest {
     string producerName = 1;
+    string name = 2;
 }
 
 message AddConsumerResponse {
