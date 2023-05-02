@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package event_broker;
+
+service EventBrokerService {
+    rpc AddProducer(AddProducerRequest) returns (AddProducerResponse);
+    rpc AddConsumer(AddConsumerRequest) returns (AddConsumerResponse);
+    rpc ProduceEvent(stream ProduceEventRequest) returns (stream ProduceEventResponse);
+    rpc ConsumerEvent(stream ConsumeEventRequest) returns (stream ConsumerEventResponse);
+}
+
+message AddProducerRequest {
+    string name = 1;
+}
+
+message AddProducerResponse {
+    string producerId = 1;
+    int32 status = 2;
+    string error = 3;
+}
+
+message AddConsumerRequest {
+    string streamName = 1;
+}
+
+message AddConsumerResponse {
+    int32 status = 1;
+    string error = 2;
+}
+
+message ProduceEventRequest {
+    string producerId = 1;
+    string event = 2;
+    string data = 3;
+    Timestamp createdAt = 4;
+}
+
+message ProduceEventResponse {
+    int32 status = 1;
+    string error = 2;
+}
+
+message ConsumeEventRequest {
+    string producerName = 1;
+    string event = 2;
+}
+
+message ConsumerEventResponse {
+    int32 status = 1;
+    string error = 2;
+    string data = 3;
+}
