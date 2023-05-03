@@ -10,7 +10,7 @@ service EventBrokerService {
     rpc GetAllProducers(EmptyMessage) returns (GetAllProducersResponse);
     rpc GetAllConsumers(EmptyMessage) returns (GetAllConsumersResponse);
     rpc ProduceEvent(ProduceEventRequest) returns (ProduceEventResponse);
-    rpc ConsumeEvent(stream ConsumeEventRequest) returns (stream ConsumerEventResponse);
+    rpc ConsumeEvent(ConsumeEventRequest) returns (stream ConsumerEventResponse);
 }
 
 message EmptyMessage {}
