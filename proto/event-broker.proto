@@ -9,7 +9,7 @@ service EventBrokerService {
     rpc RemoveConsumer(RemoveConsumerRequest) returns (RemoveConsumerResponse);
     rpc GetAllProducers(EmptyMessage) returns (GetAllProducersResponse);
     rpc GetAllConsumers(EmptyMessage) returns (GetAllConsumersResponse);
-    rpc ProduceEvent(stream ProduceEventRequest) returns (stream ProduceEventResponse);
+    rpc ProduceEvent(ProduceEventRequest) returns (ProduceEventResponse);
     rpc ConsumeEvent(stream ConsumeEventRequest) returns (stream ConsumerEventResponse);
 }
 
