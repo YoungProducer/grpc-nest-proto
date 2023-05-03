@@ -10,7 +10,7 @@ service EventBrokerService {
     rpc GetAllProducers(EmptyMessage) returns (GetAllProducersResponse);
     rpc GetAllConsumers(EmptyMessage) returns (GetAllConsumersResponse);
     rpc ProduceEvent(ProduceEventRequest) returns (ProduceEventResponse);
-    rpc ConsumeEvent(ConsumeEventRequest) returns (stream ConsumerEventResponse);
+    rpc ConsumeEvent(ConsumeEventRequest) returns (stream ConsumeEventResponse);
 }
 
 message EmptyMessage {}
@@ -96,11 +96,11 @@ message ProduceEventResponse {
 }
 
 message ConsumeEventRequest {
-    string producerName = 1;
+    reserved 1;
     string event = 2;
 }
 
-message ConsumerEventResponse {
+message ConsumeEventResponse {
     int32 status = 1;
     string error = 2;
     string data = 3;
