@@ -7,12 +7,15 @@ service EventBrokerService {
     rpc AddConsumer(AddConsumerRequest) returns (AddConsumerResponse);
     rpc RemoveProducer(RemoveProducerRequest) returns (RemoveProducerResponse);
     rpc RemoveConsumer(RemoveConsumerRequest) returns (RemoveConsumerResponse);
+    rpc GetAllProducers() returns (GetAllProducersResponse);
+    rpc GetAllConsumers() returns (GetAllConsumersResponse);
     rpc ProduceEvent(stream ProduceEventRequest) returns (stream ProduceEventResponse);
     rpc ConsumeEvent(stream ConsumeEventRequest) returns (stream ConsumerEventResponse);
 }
 
 message AddProducerRequest {
     string name = 1;
+    repeated string events = 2;
 }
 
 message AddProducerResponse {
@@ -50,6 +53,32 @@ message RemoveConsumerRequest {
 message RemoveConsumerResponse {
     int32 status = 1;
     string error = 2;
+}
+
+message GetAllProducersResponse {
+    int32 status = 1;
+    string error = 2;
+
+    message Producer {
+        string id = 1;
+        string name = 2;
+        repeated string events = 3;
+    }
+
+    repeated Producer producers = 3;
+}
+
+message GetAllConsumersResponse {
+    int32 status = 1;
+    string error = 2;
+
+    message Consumer {
+        string id = 1;
+        string name = 2;
+        repeated string events = 3;
+    }
+
+    repeated Consumer consumers = 3;
 }
 
 message ProduceEventRequest {
