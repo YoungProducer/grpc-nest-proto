@@ -22,8 +22,10 @@ message AddProducerResponse {
 }
 
 message AddConsumerRequest {
-    string producerName = 1;
+    reserved 1;
+    // string producerName = 1;
     string name = 2;
+    repeated string events = 3;
 }
 
 message AddConsumerResponse {
