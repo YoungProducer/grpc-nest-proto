@@ -84,7 +84,7 @@ message GetAllConsumersResponse {
 }
 
 message ProduceEventRequest {
-    string producerId = 1;
+    string producerName = 1;
     string event = 2;
     string data = 3;
     reserved 4;
