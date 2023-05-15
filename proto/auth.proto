@@ -6,6 +6,7 @@ service AuthService {
     rpc Register(RegisterRequest) returns (RegisterResponse) {}
     rpc Login(LoginRequest) returns (LoginResponse) {}
     rpc Validate(ValidateRequest) returns (ValidateResponse) {}
+    rpc Refresh(RefreshRequest) returns (RefreshResponse) {}
 }
 
 // Register
@@ -31,8 +32,13 @@ message LoginRequest {
 message LoginResponse {
     int32 status = 1;
     string error = 2;
-    string accessToken = 3;
-    string refreshToken = 4;
+
+    message Data {
+        string accessToken = 1;
+        string refreshToken = 2;
+    }
+
+    Data data = 3;
 }
 
 // Validate
@@ -44,5 +50,29 @@ message ValidateRequest {
 message ValidateResponse {
     int32 status = 1;
     string error = 2;
-    int32 userId = 3;
+
+    message Data {
+        int32 id = 1;
+        string username = 2;
+        string email = 3;
+    }
+
+    Data data = 3;
+}
+
+// Refresh
+message RefreshRequest {
+    string refreshToken = 1;
+}
+
+message RefreshResponse {
+    int32 status = 1;
+    string error = 2;
+    
+    message Data {
+        string accessToken = 1;
+        string refreshToken = 2;
+    }
+
+    Data data = 3;
 }
